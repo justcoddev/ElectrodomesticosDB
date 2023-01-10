@@ -12,18 +12,19 @@ const consumo_energetico = document.getElementById('consumo_energetico');
 const peso = document.getElementById('peso');
 
 //************************************
-// console.log(consumo_energetico.value);
-// const letra = consumo_energetico.value;
-// console.log(letra);
-const letraf = '';
+console.log(consumo_energetico.value);
 
-// function cambioletra(letra) {
-//   if (letra == 100) {
-//     letraf = 'A';
-//   } 
-//   return letraf;
-// }
-// console.log(letraf);
+const letra = consumo_energetico.value;
+console.log(letra);
+
+
+function cambioletra(letra) {
+  if (letra == 'A') {
+    preciobase.value = 100;
+  }
+  return preciobase.value;
+}
+console.log(cambioletra(consumo_energetico.value));
 
 //*******************************************************comprobarConsumoEnergetico(char letra)**********************
 const tipos = document.querySelector('#consumo_energetico');
@@ -33,11 +34,16 @@ tipos.addEventListener('change', () => {
   let valorOpcion = tipos.value; //Permite capturar el VALUE del select
   console.log(valorOpcion);
 
+
   var optionSelect = tipos.options[tipos.selectedIndex]; //Permite capturar el contenido de la etiqueta
+
+  const valorpreciobase = cambioletra(consumo_energetico.value);
+  document.getElementById('preciobase').innerText = `${valorpreciobase}`;
+
 
   console.log("Opcion: ", optionSelect.text);
   console.log("Valor: ", optionSelect.value);
-  let inputResult = document.querySelector('#preciobase').value = (optionSelect.value); //Mostrar en el input
+  // let inputResult = document.querySelector('#preciobase').value = (optionSelect.value); //Mostrar en el input
 });
 
 //*******************************************************METODO GET  PARA  MOSTRAR RESULTATDOS**********************
@@ -124,11 +130,8 @@ on(document, 'click', '.btnEditar', e => {
 //*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
 formArticulo.addEventListener('submit', e => {
   e.preventDefault();
-  // const letra = consumo_energetico.value;
-  // console.log(letra);
-  // cambioletra(letra);
 
-
+  const valorpreciobase = cambioletra(consumo_energetico.value);
   if (opcion === 'crear') {
     fetch(url, {
       method: 'POST',
@@ -137,7 +140,8 @@ formArticulo.addEventListener('submit', e => {
       },
       body: JSON.stringify({
         nombre_elect: nombre_elect.value,
-        preciobase: preciobase.value,
+        // preciobase: preciobase.value,
+        preciobase: valorpreciobase,
         color: color.value,
         consumo_energetico: consumo_energetico.value,
         peso: peso.value,
