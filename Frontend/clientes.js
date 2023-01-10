@@ -12,6 +12,8 @@ const sexo = document.getElementById('sexo');
 const estado_civil = document.getElementById('estado_civil');
 const edad = document.getElementById('edad');
 
+//*******************************************************METODO GET  PARA  MOSTRAR RESULTATDOS**********************
+
 btnCrear.addEventListener('click', () => {
   cedula.value = '';
   nombre.value = '';
@@ -23,7 +25,9 @@ btnCrear.addEventListener('click', () => {
   modalArticulo.show();
 });
 
-//METODO GET  PARA  MOSTRAR RESULTATDOS
+
+//*******************************************************METODO GET  PARA  MOSTRAR RESULTATDOS**********************
+
 const mostrar = (articulos) => {
   articulos.forEach(articulo => {
     resultados += `
@@ -42,7 +46,9 @@ const mostrar = (articulos) => {
   contenedor.innerHTML = resultados;
 };
 
-// Procedimiento get
+
+//*******************************************************PROCEDIMIENTO GET**********************
+
 fetch(url)
   .then(response => response.json())
   .then(data => mostrar(data))
@@ -56,7 +62,9 @@ const on = (element, event, selector, handler) => {
   });
 };
 
-//BORRAR UN ELEMENTO
+
+//*******************************************************BORRAR UN ELEMENTO**********************
+
 on(document, 'click', '.btnBorrar', e => {
   const row = e.target.parentNode.parentNode;
   const id = row.firstElementChild.innerHTML;
@@ -76,7 +84,8 @@ on(document, 'click', '.btnBorrar', e => {
     });
 });
 
-//PROCEDIMIENTO EDITAR
+//*******************************************************PROCEDIMIENTO EDITAR**********************
+
 let idForm = 0;
 on(document, 'click', '.btnEditar', e => {
   opcion = 'editar';
@@ -91,7 +100,8 @@ on(document, 'click', '.btnEditar', e => {
   modalArticulo.show();
 });
 
-//PROCEDIMIENTO DE CREAR Y EDITAR
+//*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
+
 formArticulo.addEventListener('submit', e => {
   e.preventDefault();
   if (opcion === 'crear') {

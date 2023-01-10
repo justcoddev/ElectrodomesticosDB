@@ -67,7 +67,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Datos Clientes</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -76,27 +76,41 @@
           <form>
             <div class="mb-3">
               <label for="cedula" class="col-form-label">Cédula:</label>
-              <input id="cedula" type="number" class="form-control">
+              <input id="cedula" type="number" class="form-control" required>
             </div>
             <div class="mb-3">
               <label for="nombre" class="col-form-label">Nombre:</label>
-              <input id="nombre" type="text" class="form-control">
+              <input id="nombre" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
               <label for="apellido" class="col-form-label">Apellido:</label>
-              <input id="apellido" type="text" class="form-control">
+              <input id="apellido" type="text" class="form-control" required>
             </div>
-            <div class="mb-3">
+            <div class="md-3">
               <label for="sexo" class="col-form-label">Sexo:</label>
-              <input id="sexo" type="text" class="form-control">
+              <select name="sexo" class="form-select" id="sexo" required>
+                <option selected disabled value="">Seleccione...</option>
+                <option>F</option>
+                <option>M</option>
+              </select>
             </div>
-            <div class="mb-3">
+
+            <div class="md-3">
               <label for="estado_civil" class="col-form-label">Estado Civil:</label>
-              <input id="estado_civil" type="text" class="form-control">
+              <select name="estado_civil" class="form-select" id="estado_civil" required>
+                <option selected disabled value="">Seleccione...</option>
+                <option>Solter@</option>
+                <option>Casad@</option>
+                <option>Divorciad@</option>
+                <option>Viud@</option>
+                <option>Separad@</option>
+                <option>Union Libre</option>
+              </select>
             </div>
+
             <div class="mb-3">
               <label for="edad" class="col-form-label">Edad:</label>
-              <input id="edad" type="number" class="form-control">
+              <input id="edad" type="number" class="form-control" required>
             </div>
 
 
@@ -118,7 +132,7 @@
     crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  <script src="code.js"></script>
+  <script src="clientes.js"></script>
 
 </body>
 

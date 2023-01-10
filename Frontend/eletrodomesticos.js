@@ -11,7 +11,19 @@ const color = document.getElementById('color');
 const consumo_energetico = document.getElementById('consumo_energetico');
 const peso = document.getElementById('peso');
 
+//************************************
+// console.log(consumo_energetico.value);
+// const letra = consumo_energetico.value;
+// console.log(letra);
+const letraf = '';
 
+// function cambioletra(letra) {
+//   if (letra == 100) {
+//     letraf = 'A';
+//   } 
+//   return letraf;
+// }
+// console.log(letraf);
 
 //*******************************************************comprobarConsumoEnergetico(char letra)**********************
 const tipos = document.querySelector('#consumo_energetico');
@@ -35,7 +47,7 @@ btnCrear.addEventListener('click', () => {
   nombre_elect.value = '';
   preciobase.value = '';
   color.value = '';
-  consumo_energetico = '';
+  consumo_energetico.value = '';
   peso.value = '';
   opcion = 'crear';
   modalArticulo2.show();
@@ -112,6 +124,11 @@ on(document, 'click', '.btnEditar', e => {
 //*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
 formArticulo.addEventListener('submit', e => {
   e.preventDefault();
+  // const letra = consumo_energetico.value;
+  // console.log(letra);
+  // cambioletra(letra);
+
+
   if (opcion === 'crear') {
     fetch(url, {
       method: 'POST',

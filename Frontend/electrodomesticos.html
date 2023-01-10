@@ -66,7 +66,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Datos Electrodoméstico</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -79,15 +79,27 @@
               <label for="preciobase" class="col-form-label">Precio Base:</label>
               <input name="preciobase" id="preciobase" type="number" class="form-control" required disabled>
             </div>
-            <div class="mb-3">
+            <div class="md-3">
+              <label for="color" class="col-form-label">Color:</label>
+              <select name="color" class="form-select" id="color" required>
+                <option selected disabled value="">Seleccione...</option>
+                <option>Blanco</option>
+                <option>Negro</option>
+                <option>Rojo</option>
+                <option>Azul</option>
+                <option>Gris</option>
+              </select>
+            </div>
+
+            <!-- <div class="mb-3">
               <label for="color" class="col-form-label">Color:</label>
               <input id="color" type="text" class="form-control" required>
-            </div>
+            </div> -->
 
             <div class="md-3">
               <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
-              <select name="consumo_energetico" class="form-select" id="consumo_energetico">
-                <!-- <option selected disabled value="">Choose...</option> -->
+              <select name="consumo_energetico" class="form-select" id="consumo_energetico" required>
+                <!-- <option selected disabled value="">Seleccione...</option> -->
                 <option value="100">A</option>
                 <option value="80">B</option>
                 <option value="60">C</option>
@@ -125,7 +137,7 @@
     crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  <script src="code2.js"></script>
+  <script src="eletrodomesticos.js"></script>
 
 </body>
 
