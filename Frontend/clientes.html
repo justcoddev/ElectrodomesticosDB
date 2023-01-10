@@ -29,13 +29,12 @@
 
 <body>
   <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
-    <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal">Crear</button> -->
     <ul class="nav nav-tabs justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="index.html">Ventas</a>
+        <a class="nav-link" aria-current="page" href="index.html">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="clientes.html">Clientes</a>
+        <a class="nav-link active" aria-current="page" href="clientes.html">Clientes</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" aria-current="page" href="electrodomesticos.html">Eectrodomésticos</a>
@@ -53,11 +52,9 @@
           <th>Cédula</th>
           <th>Nombre</th>
           <th>Apellido</th>
-          <th>Electrodoméstico</th>
-          <th>Color</th>
-          <th>Consumo Energético</th>
-          <th>Peso</th>
-          <th>Precio Final</th>
+          <th>Sexo</th>
+          <th>Estado Civil</th>
+          <th>Edad</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -66,7 +63,7 @@
     </table>
   </div>
 
-  <div class="modal fade" id="modalArticulo2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalArticulo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
@@ -78,24 +75,28 @@
 
           <form>
             <div class="mb-3">
-              <label for="nombre_elect" class="col-form-label">Nombre:</label>
-              <input id="nombre_elect" type="text" class="form-control">
+              <label for="cedula" class="col-form-label">Cédula:</label>
+              <input id="cedula" type="number" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="preciobase" class="col-form-label">Precio Base:</label>
-              <input id="preciobase" type="number" class="form-control">
+              <label for="nombre" class="col-form-label">Nombre:</label>
+              <input id="nombre" type="text" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="color" class="col-form-label">Color:</label>
-              <input id="color" type="text" class="form-control">
+              <label for="apellido" class="col-form-label">Apellido:</label>
+              <input id="apellido" type="text" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
-              <input id="consumo_energetico" type="text" class="form-control">
+              <label for="sexo" class="col-form-label">Sexo:</label>
+              <input id="sexo" type="text" class="form-control">
             </div>
             <div class="mb-3">
-              <label for="peso" class="col-form-label">Peso:</label>
-              <input id="peso" type="number" class="form-control">
+              <label for="estado_civil" class="col-form-label">Estado Civil:</label>
+              <input id="estado_civil" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="edad" class="col-form-label">Edad:</label>
+              <input id="edad" type="number" class="form-control">
             </div>
 
 
@@ -117,7 +118,7 @@
     crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  <!-- <script src="code2.js"></script> -->
+  <script src="code.js"></script>
 
 </body>
 

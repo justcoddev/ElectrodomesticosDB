@@ -29,16 +29,15 @@
 
 <body>
   <div class="container mt-4 shadow-lg p-3 mb-5 bg-body rounded">
-    <!-- <button id="btnCrear" type="button" class="btn btn-primary" data-bs-toggle="modal">Crear</button> -->
     <ul class="nav nav-tabs justify-content-center">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="index.html">Ventas</a>
+        <a class="nav-link" aria-current="page" href="index.html">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" aria-current="page" href="clientes.html">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="electrodomesticos.html">Eectrodomésticos</a>
+        <a class="nav-link active" aria-current="page" href="electrodomesticos.html">Eectrodomésticos</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link disabled">Disabled</a>
@@ -50,14 +49,11 @@
       <thead>
         <tr class="text-center">
           <th>ID</th>
-          <th>Cédula</th>
           <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Electrodoméstico</th>
+          <th>Precio Base</th>
           <th>Color</th>
           <th>Consumo Energético</th>
           <th>Peso</th>
-          <th>Precio Final</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -74,28 +70,40 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
-
           <form>
             <div class="mb-3">
               <label for="nombre_elect" class="col-form-label">Nombre:</label>
-              <input id="nombre_elect" type="text" class="form-control">
+              <input id="nombre_elect" type="text" class="form-control" required>
             </div>
             <div class="mb-3">
               <label for="preciobase" class="col-form-label">Precio Base:</label>
-              <input id="preciobase" type="number" class="form-control">
+              <input name="preciobase" id="preciobase" type="number" class="form-control" required disabled>
             </div>
             <div class="mb-3">
               <label for="color" class="col-form-label">Color:</label>
-              <input id="color" type="text" class="form-control">
+              <input id="color" type="text" class="form-control" required>
             </div>
-            <div class="mb-3">
+
+            <div class="md-3">
+              <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
+              <select name="consumo_energetico" class="form-select" id="consumo_energetico">
+                <!-- <option selected disabled value="">Choose...</option> -->
+                <option value="100">A</option>
+                <option value="80">B</option>
+                <option value="60">C</option>
+                <option value="50">D</option>
+                <option value="30">E</option>
+                <option value="20">F</option>
+              </select>
+            </div>
+
+            <!-- <div class="mb-3">
               <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
               <input id="consumo_energetico" type="text" class="form-control">
-            </div>
+            </div> -->
             <div class="mb-3">
               <label for="peso" class="col-form-label">Peso:</label>
-              <input id="peso" type="number" class="form-control">
+              <input id="peso" type="number" class="form-control" required>
             </div>
 
 
@@ -117,7 +125,7 @@
     crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  <!-- <script src="code2.js"></script> -->
+  <script src="code2.js"></script>
 
 </body>
 

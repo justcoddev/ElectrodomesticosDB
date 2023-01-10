@@ -11,17 +11,37 @@ const color = document.getElementById('color');
 const consumo_energetico = document.getElementById('consumo_energetico');
 const peso = document.getElementById('peso');
 
+
+
+//*******************************************************comprobarConsumoEnergetico(char letra)**********************
+const tipos = document.querySelector('#consumo_energetico');
+console.log(tipos);
+
+tipos.addEventListener('change', () => {
+  let valorOpcion = tipos.value; //Permite capturar el VALUE del select
+  console.log(valorOpcion);
+
+  var optionSelect = tipos.options[tipos.selectedIndex]; //Permite capturar el contenido de la etiqueta
+
+  console.log("Opcion: ", optionSelect.text);
+  console.log("Valor: ", optionSelect.value);
+  let inputResult = document.querySelector('#preciobase').value = (optionSelect.value); //Mostrar en el input
+});
+
+//*******************************************************METODO GET  PARA  MOSTRAR RESULTATDOS**********************
+
+
 btnCrear.addEventListener('click', () => {
   nombre_elect.value = '';
   preciobase.value = '';
   color.value = '';
-  consumo_energetico.value = '';
+  consumo_energetico = '';
   peso.value = '';
   opcion = 'crear';
   modalArticulo2.show();
 });
 
-//METODO GET  PARA  MOSTRAR RESULTATDOS--------------------mismos nombre_elects de la bd
+//*******************************************************METODO GET  PARA  MOSTRAR RESULTATDOS**********************
 const mostrar = (articulos) => {
   articulos.forEach(articulo => {
     resultados += `
@@ -39,7 +59,8 @@ const mostrar = (articulos) => {
   contenedor.innerHTML = resultados;
 };
 
-// Procedimiento get
+
+//*******************************************************PROCEDIMIENTO GET**********************
 fetch(url)
   .then(response => response.json())
   .then(data => mostrar(data))
@@ -53,7 +74,7 @@ const on = (element, event, selector, handler) => {
   });
 };
 
-//BORRAR UN ELEMENTO
+//*******************************************************BORRAR UN ELEMENTO**********************
 on(document, 'click', '.btnBorrar', e => {
   const row = e.target.parentNode.parentNode;
   const id = row.firstElementChild.innerHTML;
@@ -73,7 +94,8 @@ on(document, 'click', '.btnBorrar', e => {
     });
 });
 
-//PROCEDIMIENTO EDITAR
+
+//*******************************************************PROCEDIMIENTO EDITAR**********************
 let idForm = 0;
 on(document, 'click', '.btnEditar', e => {
   opcion = 'editar';
@@ -87,7 +109,7 @@ on(document, 'click', '.btnEditar', e => {
   modalArticulo2.show();
 });
 
-//PROCEDIMIENTO DE CREAR Y EDITAR
+//*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
 formArticulo.addEventListener('submit', e => {
   e.preventDefault();
   if (opcion === 'crear') {
