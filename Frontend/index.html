@@ -67,50 +67,93 @@
     </table>
   </div>
 
-  <div class="modal fade" id="modalArticulo2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+  <div class="modal fade" id="modalArticulo3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
           <h5 class="modal-title" id="exampleModalLabel">Artículo</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+
         <div class="modal-body">
 
-
           <form>
-            <div class="mb-3">
-              <label for="nombre_elect" class="col-form-label">Nombre:</label>
-              <input id="nombre_elect" type="text" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label for="preciobase" class="col-form-label">Precio Base:</label>
-              <input id="preciobase" type="number" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label for="color" class="col-form-label">Color:</label>
-              <input id="color" type="text" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
-              <input id="consumo_energetico" type="text" class="form-control">
-            </div>
-            <div class="mb-3">
-              <label for="peso" class="col-form-label">Peso:</label>
-              <input id="peso" type="number" class="form-control">
-            </div>
+            <h2>Datos Cliente</h2>
+            <!-- <button type="button" class="btn btn-primary">Cliente</button> -->
+            <div class="row">
+              <div class="col-md-4 ms-auto">
+                <label for="cedula" class="col-form-label">Cédula:</label>
+                <input id="cedula" type="number" class="form-control" required>
+              </div>
+              <div class="col-md-4 ms-auto">
+                <label for="nombre" class="col-form-label">Nombre:</label>
+                <input id="nombre" type="text" class="form-control" required>
+              </div>
+              <div class="col-md-4 ms-auto">
+                <label for="apellido" class="col-form-label">Apellido:</label>
+                <input id="apellido" type="text" class="form-control" required>
+              </div>
+              <div>
+                <hr />
+              </div>
+              <h2>Datos Electrodoméstico</h2>
+              <div class="row">
+                <div class="col-md-4 ms-auto">
+                  <label for="nombre_elect" class="col-form-label">Electrodoméstico:</label>
+                  <input id="nombre_elect" type="text" class="form-control">
+                </div>
+                <div class="col-md-4 ms-auto">
+                  <label for="color" class="col-form-label">Color:</label>
+                  <select name="color" class="form-select" id="color" required>
+                    <option selected disabled value="">Seleccione...</option>
+                    <option>Blanco</option>
+                    <option>Negro</option>
+                    <option>Rojo</option>
+                    <option>Azul</option>
+                    <option>Gris</option>
+                  </select>
+                </div>
+                <div class="col-md-4 ms-auto">
+                  <label for="consumo_energetico" class="col-form-label">Consumo Energético:</label>
+                  <select name="consumo_energetico" class="form-select" id="consumo_energetico" required>
+                    <!-- <option selected disabled value="">Seleccione...</option> -->
+                    <option>A</option>
+                    <option>B</option>
+                    <option>C</option>
+                    <option>D</option>
+                    <option>E</option>
+                    <option>F</option>
+                  </select>
+                </div>
+                <div class="col-md-4 ms-auto">
+                  <label for="preciobase" class="col-form-label">Precio Base:</label>
+                  <input name="preciobase" id="preciobase" type="number" class="form-control" required disabled>
+                </div>
+                <div class="col-md-4 ms-auto">
+                  <label for="peso" class="col-form-label">Peso:</label>
+                  <input id="peso" type="number" class="form-control" required>
+                </div>
+                <div class="col-md-4 ms-auto">
+                  <label for="preciofinal" class="col-form-label">Precio Final:</label>
+                  <input id="preciofinal" type="number" class="form-control" required>
+                </div>
+              </div>
+              <div>
+                <br />
+              </div>
 
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
           </form>
-
 
         </div>
       </div>
     </div>
   </div>
+
+
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -118,7 +161,7 @@
     crossorigin="anonymous"></script>
   <!-- JavaScript -->
   <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-  <!-- <script src="code2.js"></script> -->
+  <script src="factura.js"></script>
 
 </body>
 

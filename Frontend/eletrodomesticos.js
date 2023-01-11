@@ -1,3 +1,10 @@
+
+// let obtenerdato = document.getElementsByTagName("th");
+// console.log(obtenerdato[5].innerHTML);
+// // console.log(dato+ "dd");
+// export const dato = obtenerdato[5].innerHTML;
+
+
 const url = 'http://localhost:3000/api/electrodomesticos/';
 const contenedor = document.querySelector('tbody');
 let resultados = '';
@@ -11,38 +18,63 @@ const color = document.getElementById('color');
 const consumo_energetico = document.getElementById('consumo_energetico');
 const peso = document.getElementById('peso');
 
-//************************************
-console.log(consumo_energetico.value);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//************************************comprobarConsumoEnergetico(char letra)
+// console.log(consumo_energetico.value);
 
 const letra = consumo_energetico.value;
-console.log(letra);
+// console.log(letra);
 
 
 function cambioletra(letra) {
   if (letra == 'A') {
     preciobase.value = 100;
+  } else if (letra == 'B') {
+    preciobase.value = 80;
+  } else if (letra == 'C') {
+    preciobase.value = 60;
+  } else if (letra == 'D') {
+    preciobase.value = 50;
+  } else if (letra == 'E') {
+    preciobase.value = 30;
+  } else if (letra == 'F') {
+    preciobase.value = 20;
   }
   return preciobase.value;
 }
-console.log(cambioletra(consumo_energetico.value));
 
-//*******************************************************comprobarConsumoEnergetico(char letra)**********************
+// console.log(cambioletra(consumo_energetico.value));
+
+//*******************************************************change para establecer consumo con preciobase**********************
 const tipos = document.querySelector('#consumo_energetico');
 console.log(tipos);
-
 tipos.addEventListener('change', () => {
-  let valorOpcion = tipos.value; //Permite capturar el VALUE del select
-  console.log(valorOpcion);
-
-
-  var optionSelect = tipos.options[tipos.selectedIndex]; //Permite capturar el contenido de la etiqueta
-
   const valorpreciobase = cambioletra(consumo_energetico.value);
   document.getElementById('preciobase').innerText = `${valorpreciobase}`;
 
 
-  console.log("Opcion: ", optionSelect.text);
-  console.log("Valor: ", optionSelect.value);
+
+  // let valorOpcion = tipos.value; //Permite capturar el VALUE del select
+  // console.log(valorOpcion);
+  // var optionSelect = tipos.options[tipos.selectedIndex]; //Permite capturar el contenido de la etiqueta
+  // console.log("Opcion: ", optionSelect.text);
+  // console.log("Valor: ", optionSelect.value);
   // let inputResult = document.querySelector('#preciobase').value = (optionSelect.value); //Mostrar en el input
 });
 
@@ -173,6 +205,7 @@ formArticulo.addEventListener('submit', e => {
   }
   modalArticulo2.hide();
 });
+
 
 
 
