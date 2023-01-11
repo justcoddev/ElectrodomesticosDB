@@ -51,6 +51,16 @@ app.get('/api/electrodomesticos', (req, res) => {
     }
   })
 })
+//*******************************************************Facturas
+app.get('/api/facturas', (req, res) => {
+  conexion.query('SELECT * FROM facturas', (error, filas) => {
+    if (error) {
+      throw error
+    } else {
+      res.send(filas)
+    }
+  })
+})
 
 //*******************************************************Mostrar un SOLO artículo*******************************************************
 //*******************************************************Clientes
@@ -66,6 +76,17 @@ app.get('/api/clientes/:id', (req, res) => {
 //*******************************************************Electrodomesticos
 app.get('/api/electrodomesticos/:id', (req, res) => {
   conexion.query('SELECT * FROM electrodomesticos WHERE id = ?', [req.params.id], (error, fila) => {
+    if (error) {
+      throw error
+    } else {
+      res.send(fila)
+    }
+  })
+})
+
+//*******************************************************facturas
+app.get('/api/facturas/:id', (req, res) => {
+  conexion.query('SELECT * FROM facturas WHERE id = ?', [req.params.id], (error, fila) => {
     if (error) {
       throw error
     } else {
@@ -93,6 +114,20 @@ app.post('/api/clientes', (req, res) => {
 app.post('/api/electrodomesticos', (req, res) => {
   let data = { nombre_elect: req.body.nombre_elect, preciobase: req.body.preciobase, color: req.body.color, consumo_energetico: req.body.consumo_energetico, peso: req.body.peso }
   let sql = "INSERT INTO electrodomesticos SET ?"
+  conexion.query(sql, data, function (err, result) {
+    if (err) {
+      throw err
+    } else {
+      /*Esto es lo nuevo que agregamos para el CRUD con Javascript*/
+      Object.assign(data, { id: result.insertId }) //agregamos el ID al objeto data             
+      res.send(data) //enviamos los valores                         
+    }
+  })
+})
+//*******************************************************facturas
+app.post('/api/facturas', (req, res) => {
+  let data = { cedula: req.body.cedula, nombre: req.body.nombre, apellido: req.body.apellido, nombre_elect: req.body.nombre_elect, color: req.body.color, consumo_energetico: req.body.consumo_energetico, preciobase: req.body.preciobase, peso: req.body.peso, preciofinal: req.body.preciofinal }
+  let sql = "INSERT INTO facturas SET ?"
   conexion.query(sql, data, function (err, result) {
     if (err) {
       throw err
@@ -142,6 +177,28 @@ app.put('/api/electrodomesticos/:id', (req, res) => {
   })
 })
 
+//*******************************************************facturas
+app.put('/api/facturas/:id', (req, res) => {
+  let id = req.params.id
+  let cedula = req.body.cedula
+  let nombre = req.body.nombre
+  let apellido = req.body.apellido
+  let nombre_elect = req.body.nombre_elect
+  let color = req.body.color
+  let consumo_energetico = req.body.consumo_energetico
+  let preciobase = req.body.preciobase
+  let peso = req.body.peso
+  let preciofinal = req.body.preciofinal
+  let sql = "UPDATE facturas SET cedula = ?, nombre = ?, apellido = ?, nombre_elect = ?, color = ?, consumo_energetico= ?, preciobase = ?, peso = ?, preciofinal = ? WHERE id = ?"
+  conexion.query(sql, [cedula, nombre, apellido, nombre_elect, color, consumo_energetico, preciobase, peso, preciofinal, id], function (error, results) {
+    if (error) {
+      throw error
+    } else {
+      res.send(results)
+    }
+  })
+})
+
 //*******************************************************Eliminar articulo*******************************************************
 //*******************************************************Clientes
 app.delete('/api/clientes/:id', (req, res) => {
@@ -156,6 +213,17 @@ app.delete('/api/clientes/:id', (req, res) => {
 //*******************************************************Electrodomesticos
 app.delete('/api/electrodomesticos/:id', (req, res) => {
   conexion.query('DELETE FROM electrodomesticos WHERE id = ?', [req.params.id], function (error, filas) {
+    if (error) {
+      throw error
+    } else {
+      res.send(filas)
+    }
+  })
+})
+
+//*******************************************************facturas
+app.delete('/api/facturas/:id', (req, res) => {
+  conexion.query('DELETE FROM facturas WHERE id = ?', [req.params.id], function (error, filas) {
     if (error) {
       throw error
     } else {
