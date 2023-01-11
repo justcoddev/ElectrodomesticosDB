@@ -1,12 +1,12 @@
 
 // import {dato} from './eletrodomesticos.js';
 
-const url = 'http://localhost:3000/api/clientes/';
+const urlCliente = 'http://localhost:3000/api/clientes/';
 const contenedor = document.querySelector('tbody');
 let resultados = '';
 let opcion = '';
 
-const modalArticulo = new bootstrap.Modal(document.getElementById('modalArticulo'));
+const modalArticuloCliente = new bootstrap.Modal(document.getElementById('modalArticuloCliente'));
 const formArticuloClientes = document.querySelector('form');
 const cedula = document.getElementById('cedula');
 const nombre = document.getElementById('nombre');
@@ -29,7 +29,7 @@ btnCrear.addEventListener('click', () => {
   estado_civil.value = '';
   edad.value = '';
   opcion = 'crear';
-  modalArticulo.show();
+  modalArticuloCliente.show();
 });
 
 
@@ -46,7 +46,7 @@ const mostrar = (articulos) => {
                 <td>${articulo.sexo}</td>
                 <td>${articulo.estado_civil}</td>
                 <td>${articulo.edad}</td>
-                <td><a class='btnEditar btn btn-primary'>Editar</a> <a class='btnBorrar btn btn-danger'>Eliminar</a></td>
+                <td><a class='btnEditarCliente btn btn-primary'>Editar</a> <a class='btnBorrarCliente btn btn-danger'>Eliminar</a></td>
             </tr>
         `;
   });
@@ -56,7 +56,7 @@ const mostrar = (articulos) => {
 
 //*******************************************************PROCEDIMIENTO GET**********************
 
-fetch(url)
+fetch(urlCliente)
   .then(response => response.json())
   .then(data => mostrar(data))
   .catch(error => console.log(error));
@@ -72,12 +72,12 @@ const on = (element, event, selector, handler) => {
 
 //*******************************************************BORRAR UN ELEMENTO**********************
 
-on(document, 'click', '.btnBorrar', e => {
+on(document, 'click', '.btnBorrarCliente', e => {
   const row = e.target.parentNode.parentNode;
   const id = row.firstElementChild.innerHTML;
   alertify.confirm("This is a confirm dialog.",
     function () {
-      fetch(url + id, {
+      fetch(urlCliente + id, {
         method: 'DELETE'
       })
         .then(response => response.json())
@@ -94,7 +94,7 @@ on(document, 'click', '.btnBorrar', e => {
 //*******************************************************PROCEDIMIENTO EDITAR**********************
 
 let idFormClientes = 0;
-on(document, 'click', '.btnEditar', e => {
+on(document, 'click', '.btnEditarCliente', e => {
   opcion = 'editar';
   const row = e.target.parentNode.parentNode;
   idFormClientes = row.children[0].innerHTML;
@@ -104,7 +104,7 @@ on(document, 'click', '.btnEditar', e => {
   sexo.value = row.children[4].innerHTML;
   estado_civil.value = row.children[5].innerHTML;
   edad.value = row.children[6].innerHTML;
-  modalArticulo.show();
+  modalArticuloCliente.show();
 });
 
 //*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
@@ -112,7 +112,7 @@ on(document, 'click', '.btnEditar', e => {
 formArticuloClientes.addEventListener('submit', e => {
   e.preventDefault();
   if (opcion === 'crear') {
-    fetch(url, {
+    fetch(urlCliente, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -134,7 +134,7 @@ formArticuloClientes.addEventListener('submit', e => {
       });
   }
   if (opcion === 'editar') {
-    fetch(url + idFormClientes, {
+    fetch(urlCliente + idFormClientes, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -151,7 +151,7 @@ formArticuloClientes.addEventListener('submit', e => {
       .then(res => res.json())
       .then(res => location.reload());
   }
-  modalArticulo.hide();
+  modalArticuloCliente.hide();
 });
 
 
