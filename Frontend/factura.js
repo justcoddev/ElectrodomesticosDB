@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/api/facturas/';
+const urlFactura = 'http://localhost:3000/api/facturas/';
 const contenedor = document.querySelector('tbody');
 let resultados = '';
 let opcion = '';
@@ -112,7 +112,7 @@ const mostrar = (articulos) => {
 
 
 //*******************************************************PROCEDIMIENTO GET**********************
-fetch(url)
+fetch(urlFactura)
   .then(response => response.json())
   .then(data => mostrar(data))
   .catch(error => console.log(error));
@@ -131,7 +131,7 @@ on(document, 'click', '.btnBorrar', e => {
   const id = row.firstElementChild.innerHTML;
   alertify.confirm("This is a confirm dialog.",
     function () {
-      fetch(url + id, {
+      fetch(urlFactura + id, {
         method: 'DELETE'
       })
         .then(response => response.json())
@@ -173,7 +173,7 @@ formArticulo.addEventListener('submit', e => {
   const valorpreciobase = cambioletra(consumo_energetico.value);
 
   if (opcion === 'crear') {
-    fetch(url, {
+    fetch(urlFactura, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -199,7 +199,7 @@ formArticulo.addEventListener('submit', e => {
       });
   }
   if (opcion === 'editar') {
-    fetch(url + idForm, {
+    fetch(urlFactura + idForm, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
