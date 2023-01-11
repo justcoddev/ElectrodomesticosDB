@@ -7,7 +7,7 @@ let resultados = '';
 let opcion = '';
 
 const modalArticulo = new bootstrap.Modal(document.getElementById('modalArticulo'));
-const formArticulo = document.querySelector('form');
+const formArticuloClientes = document.querySelector('form');
 const cedula = document.getElementById('cedula');
 const nombre = document.getElementById('nombre');
 const apellido = document.getElementById('apellido');
@@ -93,11 +93,11 @@ on(document, 'click', '.btnBorrar', e => {
 
 //*******************************************************PROCEDIMIENTO EDITAR**********************
 
-let idForm = 0;
+let idFormClientes = 0;
 on(document, 'click', '.btnEditar', e => {
   opcion = 'editar';
   const row = e.target.parentNode.parentNode;
-  idForm = row.children[0].innerHTML;
+  idFormClientes = row.children[0].innerHTML;
   cedula.value = row.children[1].innerHTML;
   nombre.value = row.children[2].innerHTML;
   apellido.value = row.children[3].innerHTML;
@@ -109,7 +109,7 @@ on(document, 'click', '.btnEditar', e => {
 
 //*******************************************************PROCEDIMIENTO DE CREAR Y EDITAR**********************
 
-formArticulo.addEventListener('submit', e => {
+formArticuloClientes.addEventListener('submit', e => {
   e.preventDefault();
   if (opcion === 'crear') {
     fetch(url, {
@@ -134,7 +134,7 @@ formArticulo.addEventListener('submit', e => {
       });
   }
   if (opcion === 'editar') {
-    fetch(url + idForm, {
+    fetch(url + idFormClientes, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
@@ -163,112 +163,3 @@ formArticulo.addEventListener('submit', e => {
 
 
 
-
-// btnCrear.addEventListener('click', () => {
-//     descripcion.value = '';
-//     precio.value = '';
-//     stock.value = '';
-//     modalArticulo.show();
-//     opcion = 'crear';
-// });
-
-// //Funcion para mostrar resultados
-// const mostrar = (articulos) => {
-//     articulos.forEach(articulo => {
-//         resultados += `
-//             <tr class='text-center'>
-//                 <td>${articulo.id}</td>
-//                 <td>${articulo.descripcion}</td>
-//                 <td>${articulo.precio}</td>
-//                 <td>${articulo.stock}</td>
-//                 <td><a class='btnEditar btn btn-primary'>Editar</a><a class='btnBorrar btn btn-danger'>Borrar</a></td>
-//             </tr>`;
-//         });
-//     contenedor.innerHTML = resultados;
-// };
-
-// fetch(url)
-//     .then(response => response.json())
-//     .then(data => mostrar(data))
-//     .catch(error => console.log(error));
-
-// const on = (element, event, selector, handler) => {
-//     element.addEventListener(event, e => {
-//         if (e.target.closest(selector)) {
-//             handler(e);
-//         }
-//     });
-// };
-
-// //Funcion para borrar
-// on(document, 'click', '.btnBorrar', e => {
-//     const row = e.target.parentNode.parentNode;
-//     const id = row.firstElementChild.innerHTML;
-//     alertify.confirm("¿Está seguro de eliminar este articulo?",
-//         function(){
-//             fetch(url + id, {
-//                 method: 'DELETE'
-//             })
-//             .then(res => res.json())
-//             .then(() => {
-//                 location.reload();
-//                 alertify.success('Artículo Eliminado');
-//             });
-//         },
-//         function(){
-//             alertify.error('Cancelado');
-//         });
-//     console.log(id);
-// });
-
-// //Funcion para editar
-// let idArticulo = 0;
-// on(document, 'click', '.btnEditar', e => {
-//     const row = e.target.parentNode.parentNode;
-//     idArticulo = row.children[0].innerHTML;
-//     descripcion.value = row.children[1].innerHTML;
-//     precio.value = row.children[2].innerHTML;
-//     stock.value = row.children[3].innerHTML;
-//     opcion = 'editar';
-//     modalArticulo.show();
-// });
-
-// formArticulo.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     if (opcion === 'crear') {
-//         fetch(url, {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//                 descripcion: descripcion.value,
-//                 precio: precio.value,
-//                 stock: stock.value,
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(data => {
-//             const nuevoArticulo = [];
-//             nuevoArticulo.push(data);
-//             mostrar(nuevoArticulo);
-//         });
-//     }
-
-//     if (opcion === 'editar') {
-//         fetch(url + idArticulo, {
-//             method: 'PUT',
-//             headers: {
-//                 'Content-type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//                 descripcion: descripcion.value,
-//                 precio: precio.value,
-//                 stock: stock.value,
-//             })
-//         })
-//         .then(res => res.json())
-//         .then(res => location.reload());
-//     }
-//     modalArticulo.hide();
-// });
